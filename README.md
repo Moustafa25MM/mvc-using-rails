@@ -30,12 +30,18 @@ POSTGRES_PASSWORD=your_password
 POSTGRES_USER=your_username
 POSTGRES_DB=your_database_name
 
+if using Docker :
+HOST=db
+
+else :
+HOST=localhost
+
 ## Start the APP using Docker
     after setting the environment variables as above in .env file then :
 
     docker-compose build
     docker-compose up
-    
+
 ## Start the APP
 
     rails db:create
