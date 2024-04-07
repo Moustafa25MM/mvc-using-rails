@@ -28,7 +28,7 @@ create a .env file in the root directory with the following contents:
 DATABASE_PASSWORD=your_password
 DATABASE_USERNAME=your_username
 
-## Start the APP :
+## Start the APP
 
     rails db:create
     rails db:migrate
