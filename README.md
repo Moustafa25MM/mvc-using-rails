@@ -1,24 +1,39 @@
-# README
+# Project Name
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README documents the necessary steps to get the application up and running.
 
-Things you may want to cover:
+## Table of Contents
 
-* Ruby version
+- [Ruby and Rails Versions](#ruby-and-rails-versions)
+- [System Dependencies](#system-dependencies)
+- [Configuration](#configuration)
+- [Start the APP](#start-the-app)
+- [Database Schema](#database-schema)
 
-* System dependencies
+## Ruby and Rails Versions
 
-* Configuration
+- Ruby version: `3.2.2`
+- Rails version: `7.0.8.1`
 
-* Database creation
+## System Dependencies
 
-* Database initialization
+To install system dependencies, run:
 
-* How to run the test suite
+```bash
+bundle install
+```
+## Configuration
+create a .env file in the root directory with the following contents:
 
-* Services (job queues, cache servers, search engines, etc.)
+DATABASE_PASSWORD=your_password
+DATABASE_USERNAME=your_username
 
-* Deployment instructions
+## Start the APP :
 
-* ...
+    rails db:create
+    rails db:migrate
+    rails s
+
+## Database Schema
+
+![Alt text](./databseSchema.png)
