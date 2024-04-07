@@ -5,4 +5,6 @@ class Movie < ApplicationRecord
     has_many :filming_locations, through: :movie_filming_locations
     has_many :movie_countries
     has_many :countries, through: :movie_countries
+
+    has_many :reviews
   end

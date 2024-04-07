@@ -1,4 +1,13 @@
 <h1>Movies</h1>
+
+<%= form_with(url: movies_path, method: :get, local: true) do |form| %>
+  <div class="search-form">
+    <%= form.label :search, "Search by Actor:" %>
+    <%= form.text_field :search %>
+    <%= form.submit "Search" %>
+  </div>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -6,24 +15,30 @@
       <th>Description</th>
       <th>Year</th>
       <th>Director</th>
-      <th>Filming Location</th>
-      <th>Country</th>
+      <th>Filming Locations</th>
+      <th>Countries</th>
       <th>Average Rating</th>
       <th>Actors</th>
     </tr>
   </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.description %></td>
-        <td><%= movie.year %></td>
-        <td><%= movie.director %></td>
-        <td><%= movie.filming_location %></td>
-        <td><%= movie.country %></td>
-        <td><%= movie.average_stars.round(2) %></td>
-        <td><%= movie.actors.map(&:name).join(", ") %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<tbody>
+  <% @movies.each do |movie| %>
+  <tr>
+    <td><%= movie.title %></td>
+    <td><%= movie.description %></td>
+    <td><%= movie.year %></td>
+    <td><%= movie.director %></td>
+    <td><%= movie.filming_locations.map(&:name).join(", ") %></td>
+    <td><%= movie.countries.map(&:name).join(", ") %></td>
+    <td><%= number_with_precision(movie.average_stars, precision: 2) %></td>
+    <td>
+      <% if params[:search].present? %>
+        <%= movie.searched_actor_name %>
+      <% else %>
+        <%= movie.actors.map(&:name).join(", ") %>
+      <% end %>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
 </table>
